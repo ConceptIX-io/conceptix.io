@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ConceptIX</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen flex flex-col bg-gray-900 text-white font-sans">
+	<header class="p-4">
+		<div class="flex items-center space-x-2">
+			<svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+				stroke-linecap="round" stroke-linejoin="round">
+				<path d="m18 16 4-4-4-4" />
+				<path d="m6 8-4 4 4 4" />
+				<path d="m14.5 4-5 16" />
+			</svg>
+			<span class="text-2xl font-bold">ConceptIX</span>
+		</div>
+	</header>
+
+	<main class="flex-grow flex flex-col items-center justify-center p-4 text-center">
+		<h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
+			<span class="text-[#FF8800]">Leagueify</span> is Launching Soon
+		</h1>
+		<p class="text-xl mb-8 max-w-2xl">
+			Get ready for the community-focused league management software, developed by ConceptIX, allowing
+			anyone to develop copetitive and fun leagues for teams of all ages. An open-source version will
+			be released shortly after the Leagueify platform is live.
+		</p>
+
+		<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+			<div class="bg-gray-800 rounded-lg p-4">
+				<div id="days" class="text-3xl font-bold">00</div>
+				<div class="text-sm uppercase">days</div>
+			</div>
+			<div class="bg-gray-800 rounded-lg p-4">
+				<div id="hours" class="text-3xl font-bold">00</div>
+				<div class="text-sm uppercase">hours</div>
+			</div>
+			<div class="bg-gray-800 rounded-lg p-4">
+				<div id="minutes" class="text-3xl font-bold">00</div>
+				<div class="text-sm uppercase">minutes</div>
+			</div>
+			<div class="bg-gray-800 rounded-lg p-4">
+				<div id="seconds" class="text-3xl font-bold">00</div>
+				<div class="text-sm uppercase">seconds</div>
+			</div>
+		</div>
+
+		<div class="mt-4 md:mt-8">
+			<a href="https://leagueify.org" target="_blank" rel="nofollow noopener noreferrer"
+				class="inline-block rounded bg-[#FF8800] px-6 py-3 text-sm font-medium text-center text-white transition hover:bg-[#F1762E] focus:outline-none focus:ring focus:ring-[#FF8800] shadow">
+				Explore Leagueify
+			</a>
+		</div>
+	</main>
+
+	<footer class="p-4 flex justify-center space-x-4">
+		<a href="https://github.com/Leagueify" target="_blank" rel="noreferrer nofollow noopener"
+			class="text-gray-400 hover:text-white transition-colors">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+				stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+				class="h-6 w-6">
+				<path
+					d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+				</path>
+			</svg>
+			<span class="sr-only">GitHub</span>
+		</a>
+	</footer>
+
+	<script>
+		function updateCountdown() {
+			const endDate = new Date('2024-10-31T23:59:59').getTime();
+			const now = new Date().getTime();
+			const distance = endDate - now;
+
+			const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+			const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+			document.getElementById('days').innerText = days.toString().padStart(2, '0');
+			document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+			document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+			document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+		}
+
+		setInterval(updateCountdown, 1000);
+		updateCountdown();
+
+		document.getElementById('subscribe-form').addEventListener('submit', function (e) {
+			e.preventDefault();
+			const email = this.email.value;
+			document.getElementById('form-response').innerHTML = `<p class="text-green-400">Thank you! ${email} has been subscribed.</p>`;
+			this.reset();
+		});
+	</script>
+</body>
+
+</html>
